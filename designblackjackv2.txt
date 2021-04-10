@@ -1,0 +1,8 @@
+1. player gets one random card
+2. player gets choice to hit or stand
+3. if hit, player gets 1 more card, adds to total value
+4. if stands, player gets no cards
+5. infinite hits, if stand, turn ends (1 turn), if user goes over 21 turn over
+6. after user's turn, dealer draws till value reaches 17+
+Bust=21+, blackjack= 21, lose= lower than dealer value, win= higher than dealer value
+aces= 1, jack= 11 queen= 12 king= 13
