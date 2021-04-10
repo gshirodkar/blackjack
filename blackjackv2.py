@@ -18,9 +18,11 @@ def isTie():
 def getrandomcard():
     return random.randint(1,13)
 print (playercardcount)
-#def hit():
-    #playercardcount+=1
-    #playertotal= getrandomcard()+playertotal
+def hit():
+    global playercardcount;
+    playercardcount+=1
+    global playertotal;
+    playertotal= getrandomcard()+playertotal
 user1= input ("insert name here   ")
 print ("generating random card for " +user1)
 #hit()
