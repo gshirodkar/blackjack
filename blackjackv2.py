@@ -27,9 +27,9 @@ def dealerTurn():
     dealertotal= getrandomcard()+dealertotal
 dealerTurn()
 
-#Prints dealer card stats:
-print ("Total number of dealer cards " + str(dealercardcount))
-print ("Total value of dealer cards " + str(dealertotal))
+#Prints dealer card stats: - Already used in ImportantStatements Method
+# print ("Total number of dealer cards " + str(dealercardcount))
+# print ("Total value of dealer cards " + str(dealertotal))
 
 def hit():
     global playercardcount;
@@ -38,17 +38,29 @@ def hit():
     playertotal= getrandomcard()+playertotal
 user1= input ("insert name here   ")
 print ("generating random card for " +user1)
+
+
+#Prints player card stats: Already used in ImportantStatements Method
+# print ("playercardcount " +str(playercardcount))
+# print ("playercardtotal " +str(playertotal))
+
+#Testing with hits!
 hit()
-
-#Prints player card stats:
-print ("playercardcount " +str(playercardcount))
-print ("playercardtotal " +str(playertotal))
-
+dealerTurn()
+importantStatements()
+hit()
+dealerTurn()
+importantStatements()
+hit()
+dealerTurn()
+importantStatements
 
 def stand(): 
     print ("you have have chosen to stand")
 def roundCheck():
+    global playerbust
     global playertotal
+    global dealerbust
     if playertotal >21:
         playerbust= True
     global dealertotal
@@ -57,11 +69,9 @@ def roundCheck():
     #put this at the end of the game: if isTie():
         #print ("you tied!, you suck") 
         #check exit game function
-    global playerbust
     if playerbust:
         print ("dealer wins, you suck")
          #check exit game function
-    global dealerbust
     if dealerbust:
         print ("you win, congrats!")
          #check exit function
