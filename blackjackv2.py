@@ -9,8 +9,8 @@ gametie= False
 def importantStatements():
     print ("Total number of dealer cards " + str(dealercardcount))
     print ("Total value of dealer cards " + str(dealertotal))
-    print ("playercardcount " +str(playercardcount))
-    print ("playercardtotal " +str(playertotal))
+    print ("Total number of player cards " +str(playercardcount))
+    print ("Total value of player cards " +str(playertotal))
 
 
 def getrandomcard():
@@ -46,17 +46,16 @@ print ("generating random card for " +user1)
 
 #Testing with hits!
 hit()
-dealerTurn()
+#dealerTurn()
 importantStatements()
-hit()
-dealerTurn()
-importantStatements()
-hit()
-dealerTurn()
-importantStatements
 
-def stand(): 
-    print ("you have have chosen to stand")
+#hit()
+#dealerTurn()
+#importantStatements()
+#hit()
+#dealerTurn()
+#importantStatements
+
 def roundCheck():
     global playerbust
     global playertotal
@@ -68,13 +67,29 @@ def roundCheck():
         dealerbust= True
     #put this at the end of the game: if isTie():
         #print ("you tied!, you suck") 
-        #check exit game function
+        quit
     if playerbust:
         print ("dealer wins, you suck")
-         #check exit game function
+        quit
     if dealerbust:
         print ("you win, congrats!")
-         #check exit function
+        quit
 roundCheck()
+
+def stand(): 
+    print ("you have have chosen to stand")
+
+
+x= input ("do you want to hit or stand?   ")
+if x == "hit":
+    hit()
+    dealerTurn()
+    importantStatements()
+if x== "stand":
+    stand()
+    dealerTurn()
+    importantStatements()
+
+
 
 
