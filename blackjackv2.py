@@ -1,4 +1,5 @@
 import random
+gamerunning= True
 playertotal=0
 playercardcount=0
 dealercardcount= 0
@@ -8,8 +9,11 @@ dealerbust= False
 gametie= False
 def importantStatements():
     print ("Total number of dealer cards " + str(dealercardcount))
+    print ("")
     print ("Total value of dealer cards " + str(dealertotal))
+    print ("")
     print ("Total number of player cards " +str(playercardcount))
+    print ("")
     print ("Total value of player cards " +str(playertotal))
 
 
@@ -65,30 +69,63 @@ def roundCheck():
     global dealertotal
     if dealertotal >21:
         dealerbust= True
+    if dealertotal== 21:
+        print ("dealer wins, the game is over")
+        quit()
+    if playertotal== 21:
+        print ("player wins, the dealer has lost")
+        quit()    
     #put this at the end of the game: if isTie():
         #print ("you tied!, you suck") 
         quit
     if playerbust:
         print ("dealer wins, you suck")
-        quit
+        quit()
     if dealerbust:
         print ("you win, congrats!")
-        quit
+        quit()
 roundCheck()
 
 def stand(): 
-    print ("you have have chosen to stand")
+    global dealertotal
+    global playertotal
+    while (dealertotal< 16):
+        dealerTurn()
+        if dealertotal>16 or dealertotal<21:
+            importantStatements()
+            if dealertotal> playertotal:
+                print ("you lose")
+            if dealertotal< playertotal:
+                print ("you win")
+            quit()
+    roundCheck()
+    importantStatements()
+    print ("you have chosen to stand")
+    if dealertotal> playertotal:
+        print ("you lose")
+    if dealertotal< playertotal:
+        print ("you win")
+    quit()
 
 
-x= input ("do you want to hit or stand?   ")
-if x == "hit":
-    hit()
-    dealerTurn()
+
+while(gamerunning):
+    userinput= input ("do you want to hit or stand?   ")
+    if userinput == "hit":
+        hit()
+        dealerTurn()
+    if userinput== "stand":
+        stand()
+        dealerTurn()
     importantStatements()
-if x== "stand":
-    stand()
-    dealerTurn()
-    importantStatements()
+    roundCheck()
+    
+#if userinput!= "hit" or userinput!= "stand":
+   # print ("")
+   # print ("you idiot insert hit or stand")
+   # userinput= input ("do you want to hit or stand?   ")
+
+
 
 
 
