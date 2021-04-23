@@ -16,6 +16,13 @@ def importantStatements():
     print ("")
     print ("Total value of player cards " +str(playertotal))
 
+def gameAce (total):
+    ace= 0
+    if total+11>21:
+        ace=1
+    else:
+         ace=11
+    return ace
 
 def getrandomcard():
     return random.randint(1,13)
@@ -28,7 +35,11 @@ def dealerTurn():
     global dealercardcount;
     dealercardcount= dealercardcount+1
     global dealertotal;
-    dealertotal= getrandomcard()+dealertotal
+    dealerrandcard= getrandomcard()
+    if dealerrandcard==1:
+        dealertotal= dealertotal+ gameAce(dealertotal)
+        return
+    dealertotal= dealerrandcard+dealertotal
 dealerTurn()
 
 #Prints dealer card stats: - Already used in ImportantStatements Method
@@ -39,7 +50,16 @@ def hit():
     global playercardcount;
     playercardcount+=1
     global playertotal;
-    playertotal= getrandomcard()+playertotal
+    randcard= getrandomcard()
+    if randcard== 1:
+        playertotal= playertotal+ gameAce(playertotal)
+        return
+    playertotal= randcard+playertotal
+
+   
+   
+
+
 user1= input ("insert name here   ")
 print ("generating random card for " +user1)
 
@@ -119,7 +139,10 @@ while(gamerunning):
         dealerTurn()
     importantStatements()
     roundCheck()
-    
+    importantStatements()
+
+
+
 #if userinput!= "hit" or userinput!= "stand":
    # print ("")
    # print ("you idiot insert hit or stand")
